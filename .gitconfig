@@ -1,0 +1,10 @@
+[init]
+	defaultBranch = main
+[alias]
+	st = status
+	cm = commit
+	ft = fetch
+	br = branch
+	ch = checkout
+[core]
+	editor = nvim
