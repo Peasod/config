@@ -22,8 +22,14 @@ then
 echo 'Kopierar över init.lua till ~/.config/nvim/'
 cp ./init.lua ~/.config/nvim/ 
 
+elif [ $1 = 4 ]
+then
+
+echo 'Kopierar över typecraft till ~/.config/nvim/'
+cp ./typecraftEP1-init.lua ~/.config/nvim/init.lua
+
 else
 echo 'Inget alternativ valt.'
-echo ' 1, nvim 2,nvim-lazy 3,init.lua '
+echo ' 1, nvim 2,nvim-lazy 3,init.lua 4,typecraft'
 
 fi
