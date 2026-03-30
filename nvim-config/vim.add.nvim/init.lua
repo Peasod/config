@@ -1,8 +1,12 @@
 vim.pack.add({
 
-'https://github.com/nvim-treesitter/nvim-treesitter'
+'https://github.com/nvim-treesitter/nvim-treesitter',
+'https://github.com/catppuccin/nvim',
+'https://github.com/folke/tokyonight.nvim.git'
 
 })
+-- Set default colorscheme
+vim.cmd.colorscheme "tokyonight-night" 
 
 -- Leader
 vim.g.mapleader = 'ä'
@@ -21,5 +25,5 @@ vim.o.cursorline = true
 vim.o.wrap = false
 
 -- Mapping
-vim.keymap.set("o", "§", "$")
+vim.keymap.set({"o", "n"}, "§", "$")
 vim.keymap.set("n", "<leader>å", ":Ex<CR>")
