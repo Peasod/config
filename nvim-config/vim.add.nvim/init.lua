@@ -2,7 +2,9 @@ vim.pack.add({
 
 'https://github.com/nvim-treesitter/nvim-treesitter',
 'https://github.com/catppuccin/nvim',
-'https://github.com/folke/tokyonight.nvim.git'
+'https://github.com/folke/tokyonight.nvim.git',
+'https://github.com/nvim-lua/plenary.nvim.git',
+'https://github.com/nvim-telescope/telescope.nvim.git'
 
 })
 -- Set default colorscheme
