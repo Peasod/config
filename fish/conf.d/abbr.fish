@@ -1,0 +1,5 @@
+abbr -a -- gs 'git status'
+abbr -a -- gc 'git commit'
+abbr -a -- gsw 'git switch'
+abbr -a -- gb 'git branch'
+abbr -a -- gp 'git pull'
