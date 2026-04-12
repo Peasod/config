@@ -4,6 +4,7 @@ vim.pack.add({
 'https://github.com/catppuccin/nvim',
 'https://github.com/folke/tokyonight.nvim.git',
 'https://github.com/nvim-lua/plenary.nvim.git',
+'https://github.com/folke/which-key.nvim.git',
 'https://github.com/nvim-telescope/telescope.nvim.git'
 
 })
