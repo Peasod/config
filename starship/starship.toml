@@ -1,0 +1,24 @@
+# [line_break]
+# disabled = true
+
+[directory]
+style = '#8d1651'
+truncation_length = 5
+
+[hostname]
+ssh_only = false
+
+[localip]
+disabled = false
+
+# [shell]
+# disabled = false
+
+# [status]
+# disabled = false
+
+# [sudo]
+# disabled = false
+
+# [time]
+# disabled = false
