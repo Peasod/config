@@ -5,6 +5,7 @@ vim.pack.add({
 'https://github.com/folke/tokyonight.nvim.git',
 'https://github.com/nvim-lua/plenary.nvim.git',
 'https://github.com/folke/which-key.nvim.git',
+-- 'https://github.com/neovim/nvim-lspconfig',
 'https://github.com/nvim-telescope/telescope.nvim.git'
 
 })
@@ -33,3 +34,6 @@ vim.keymap.set("n", "<leader>å", ":Ex<CR>")
 
 -- Fuzzy
 vim.keymap.set("n", "<leader>f", ":Telescope<CR>")
+
+-- LSP
+-- vim.lsp.enable('pyright')
