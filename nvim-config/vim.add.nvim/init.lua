@@ -32,4 +32,4 @@ vim.keymap.set({"o", "n"}, "§", "$")
 vim.keymap.set("n", "<leader>å", ":Ex<CR>")
 
 -- Fuzzy
-vim.keymap.set("n", "<leader>f", ":Telescope")
+vim.keymap.set("n", "<leader>f", ":Telescope<CR>")
