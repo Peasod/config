@@ -15,8 +15,8 @@ vim.cmd.colorscheme "tokyonight-night"
 vim.g.mapleader = 'ä'
 
 -- Init.lua config
-vim.keymap.set("n", "<leader>ev", ":edit $MYVIMRC<CR>")
-vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>")
+vim.keymap.set("n", "<leader>ve", ":edit $MYVIMRC<CR>")
+vim.keymap.set("n", "<leader>vs", ":source $MYVIMRC<CR>")
 
 -- Window settings
 vim.o.number = true
