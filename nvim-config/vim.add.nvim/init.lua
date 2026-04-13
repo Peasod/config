@@ -30,3 +30,6 @@ vim.o.wrap = false
 -- Mapping
 vim.keymap.set({"o", "n"}, "§", "$")
 vim.keymap.set("n", "<leader>å", ":Ex<CR>")
+
+-- Fuzzy
+vim.keymap.set("n", "<leader>f", ":Telescope")
