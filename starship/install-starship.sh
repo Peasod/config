@@ -7,4 +7,4 @@ curl -sS https://starship.rs/install.sh | sh
 echo 'starship init fish | source' >> ~/.config/fish/config.fish
 
 # Kopierar starfish.toml till .config
-cp ./starfish.toml ~/.config/starfish.toml
+cp ./starship.toml ~/.config/starship.toml
