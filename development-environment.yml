@@ -1,0 +1,70 @@
+---
+- name: Installera Peasod miljö
+  hosts: localhost
+  gather_facts: true
+  become: true
+
+  tasks:
+  - name: Installerar programm
+    ansible.builtin.apt:
+      name:
+        - fish
+        - git
+        - fzf
+        - npm
+      state: present
+      update_cache: true
+
+  - name: Installerar Neovim för ubuntu 24.04
+    ansible.builtin.apt:
+      name:
+        - neovim=0.12.0~ubuntu1+git202601110810-d62bbe24cb-793e58f65d-e9f8804254~ubuntu24.04.1
+      state: present
+    when: ansible_distribution_version == "24.04" 
+
+  - name: Installerar Neovim för icke ubuntu 24.04
+    ansible.builtin.apt:
+      name:
+        - neovim
+      state: present
+    when: ansible_distribution_version != "24.04" 
+    
+    
+- name: Konfigurerar Peasod miljö
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+  - name: Fish-konfiguration
+    ansible.builtin.copy:
+      src: fish
+      dest: ~/.config
+
+  - name: Starship-konfiguration
+    ansible.builtin.copy:
+      src: starship/starship.toml
+      dest: ~/.config/starship.toml
+
+  - name: delete found files and folders
+    ansible.builtin.file:
+      path: ~/.config/nvim
+      state: absent
+    
+  - name: Create nvim folder
+    ansible.builtin.file:
+      path: ~/.config/nvim
+      state: directory
+    
+  - name: Neovim-konfiguration
+    ansible.builtin.copy:
+      src: nvim-config/vim.add.nvim/init.lua
+      dest: ~/.config/nvim/init.lua
+      force: true
+
+  - name: Neovim-konfiguration - LAZYVIM
+    ansible.builtin.copy:
+      src: nvim-config/LazyVim/
+      dest: ~/.config/nvim/
+    tags:
+      - lazyvim
+      - never
