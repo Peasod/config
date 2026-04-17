@@ -23,14 +23,22 @@
       state: present
     when: ansible_distribution_version == "24.04" 
 
-  - name: Installerar Neovim för icke ubuntu 24.04
+  - name: installerar neovim för icke ubuntu 24.04
     ansible.builtin.apt:
       name:
         - neovim
       state: present
     when: ansible_distribution_version != "24.04" 
 
-    # Behöver addera Zellij, installeras via 'cargo'
+  - name: Test om Zellij är installerat
+    ansible.builtin.shell:  command -v zellij
+    register: zellij
+    ignore_errors: true
+
+  - name: Installerar Zellij med hjälp av cargo
+    ansible.builtin.shell: cargo install --locked zellij
+    ignore_errors: true
+    when: zellij is failed
     
     
 - name: Konfigurerar Peasod miljö
