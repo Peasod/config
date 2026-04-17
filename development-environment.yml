@@ -48,6 +48,11 @@
       src: starship/starship.toml
       dest: ~/.config/starship.toml
 
+  - name: Zellij-konfiguration
+    ansible.builtin.copy:
+      src: zellij/config.kdl
+      dest: ~/.config/zellij/config.kdl
+      
   - name: Add starship line to .bashrc
     ansible.builtin.lineinfile:
         path: ~/.config/fish/config.fish
