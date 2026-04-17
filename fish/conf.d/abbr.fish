@@ -8,4 +8,9 @@ abbr -a -- gp 'git pull'
 abbr -a -- gpu 'git push'
 abbr -a -- gd 'git diff'
 
+# Neovim
+abbr -a -- n 'nvim .'
 
+# Zellij
+abbr -a -- z 'zellij'
+abbr -a -- zl 'zellij --layout'
