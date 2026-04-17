@@ -48,11 +48,16 @@
       src: starship/starship.toml
       dest: ~/.config/starship.toml
 
+  - name: Add starship line to .bashrc
+    ansible.builtin.lineinfile:
+        path: ~/.config/fish/config.fish
+        line: "starship init fish | source" 
+
   - name: delete found files and folders
     ansible.builtin.file:
       path: ~/.config/nvim
       state: absent
-    
+
   - name: Create nvim folder
     ansible.builtin.file:
       path: ~/.config/nvim
