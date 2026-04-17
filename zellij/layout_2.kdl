@@ -1,0 +1,15 @@
+layout split_direction="vertical"{
+    pane size="70%" focus=true {
+        command "nvim"
+        args "."
+    }
+    pane {
+        pane size="20%" {
+            command "git" 
+            args "status"
+        }
+        pane
+
+    }
+}
+
