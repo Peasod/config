@@ -31,6 +31,9 @@ vim.o.wrap = false
 -- Mapping
 vim.keymap.set({"o", "n"}, "§", "$")
 vim.keymap.set("n", "<leader>å", ":Ex<CR>")
+vim.keymap.set("n", '<leader>"', 'ciw"<Esc>pa"<Esc>', {desc = "Omge visuell sektion med dubbelfnuttar"})
+vim.keymap.set("n", "<leader>'", "ciw'<Esc>pa'<Esc>", {desc = "Omge visuell sektion med enkelfnuttar"})
+vim.keymap.set("n", "<leader>{", "ciw{{ <Esc>pa }}<Esc>", {desc = "Omge visuell sektion med måsvingar"})
 
 -- Fuzzy
 vim.keymap.set("n", "<leader>f", ":Telescope<CR>")
