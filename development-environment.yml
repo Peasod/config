@@ -15,20 +15,44 @@
         - npm
       state: present
       update_cache: true
+  #
+  # - name: Installerar Neovim för ubuntu 24.04
+  #   ansible.builtin.apt:
+  #     name:
+  #       - neovim=0.12.0~ubuntu1+git202601110810-d62bbe24cb-793e58f65d-e9f8804254~ubuntu24.04.1
+  #     state: present
+  #   when: ansible_distribution_version == "24.04" 
+  #
+  # - name: installerar neovim för icke ubuntu 24.04
+  #   ansible.builtin.apt:
+  #     name:
+  #       - neovim
+  #     state: present
+  #   when: ansible_distribution_version != "24.04" 
 
-  - name: Installerar Neovim för ubuntu 24.04
-    ansible.builtin.apt:
-      name:
-        - neovim=0.12.0~ubuntu1+git202601110810-d62bbe24cb-793e58f65d-e9f8804254~ubuntu24.04.1
-      state: present
-    when: ansible_distribution_version == "24.04" 
+  - name: Laddar hem neovim-tar
+    ansible.builtin.get_url: 
+      url: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz"
+      dest: "/tmp/nvim-linux-x86_64.tar.gz"
+      mode: "0644"
 
-  - name: installerar neovim för icke ubuntu 24.04
-    ansible.builtin.apt:
-      name:
-        - neovim
-      state: present
-    when: ansible_distribution_version != "24.04" 
+  - name: Raderar gammal neovim 
+    ansible.builtin.file:
+      path: "/opt/nvim-install-86x_64"
+      state: absent
+    
+  - name: Extraherar neovim till /opt
+    ansible.builtin.unarchive:
+      src: /tmp/nvim-linux-x86_64.tar.gz
+      dest: /opt
+      remote_src: true
+    
+  - name: Symbolisklänk för neovim till /usr/local/bin
+    ansible.builtin.file:
+      src: /opt/nvim-linux-x86_64/bin/nvim
+      dest: /usr/local/bin/nvim
+      state: link
+      force: true
 
   - name: Test om Zellij är installerat
     ansible.builtin.shell:  command -v zellij
