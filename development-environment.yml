@@ -5,77 +5,76 @@
   become: true
 
   tasks:
-  - name: Installerar programm
-    ansible.builtin.apt:
-      name:
-        - fish
-        - git
-        - fzf
-        # - cargo
-        # - npm
-      state: present
-      update_cache: true
-
-  - name: Laddar hem neovim-tar
-    ansible.builtin.get_url: 
-      url: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz"
-      dest: "/tmp/nvim-linux-x86_64.tar.gz"
-      mode: "0644"
-
-  - name: Raderar gammal neovim 
-    ansible.builtin.file:
-      path: "/opt/nvim-install-86x_64"
-      state: absent
-    
-  - name: Extraherar neovim till /opt
-    ansible.builtin.unarchive:
-      src: /tmp/nvim-linux-x86_64.tar.gz
-      dest: /opt
-      remote_src: true
-    
-  - name: Symbolisklänk för neovim till /usr/local/bin
-    ansible.builtin.file:
-      src: /opt/nvim-linux-x86_64/bin/nvim
-      dest: /usr/local/bin/nvim
-      state: link
-      force: true
-
-  - name: Laddar hem zellij-tar
-    ansible.builtin.get_url: 
-      url: "https://github.com/zellij-org/zellij/releases/download/v0.44.1/zellij-x86_64-unknown-linux-musl.tar.gz"
-      dest: "/tmp/zellij-x86_64-unknown-linux-musl.tar.gz"
-      mode: "0644"
-
-  - name: Raderar gammal zellij 
-    ansible.builtin.file:
-      path: "/opt/zellij-x86_64"
-      state: absent
-    
-  - name: Extraherar zellij till /opt
-    ansible.builtin.unarchive:
-      src: /tmp/zellij-x86_64-unknown-linux-musl.tar.gz
-      dest: /opt
-      remote_src: true
-    
-  - name: Symbolisklänk för zellij till /usr/local/bin
-    ansible.builtin.file:
-      src: /opt/zellij
-      dest: /usr/local/bin/zellij
-      state: link
-      force: true
-
-
-  # - name: Test om Zellij är installerat
-  #   ansible.builtin.shell:  command -v zellij
-  #   register: zellij
-  #   ignore_errors: true
+  # - name: Installerar programm
+  #   ansible.builtin.apt:
+  #     name:
+  #       - fish
+  #       - git
+  #       - fzf
+  #       # - cargo
+  #       # - npm
+  #     state: present
+  #     update_cache: true
   #
-  # - name: Installerar Zellij med hjälp av cargo
-  #   ansible.builtin.shell: cargo install --locked zellij
-  #   ignore_errors: true
-  #   when: zellij is failed
-    
-    
+
+  #     url: "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz"
+  #     dest: "/tmp/nvim-linux-x86_64.tar.gz"
+  #     mode: "0644"
+  #
+  # - name: Raderar gammal neovim 
+  #   ansible.builtin.file:
+  #     path: "/opt/nvim-install-86x_64"
+  #     state: absent
+  #
+  # - name: Extraherar neovim till /opt
+  #   ansible.builtin.unarchive:
+  #     src: /tmp/nvim-linux-x86_64.tar.gz
+  #     dest: /opt
+  #     remote_src: true
+  #
+  # - name: Symbolisklänk för neovim till /usr/local/bin
+  #   ansible.builtin.file:
+  #     src: /opt/nvim-linux-x86_64/bin/nvim
+  #     dest: /usr/local/bin/nvim
+  #     state: link
+  #     force: true
+  #
+  # - name: Laddar hem zellij-tar
+  #   ansible.builtin.get_url: 
+  #     url: "https://github.com/zellij-org/zellij/releases/download/v0.44.1/zellij-x86_64-unknown-linux-musl.tar.gz"
+  #     dest: "/tmp/zellij-x86_64-unknown-linux-musl.tar.gz"
+  #     mode: "0644"
+  #
+  # - name: Raderar gammal zellij 
+  #   ansible.builtin.file:
+  #     path: "/opt/zellij-x86_64"
+  #     state: absent
+  #
+  # - name: Extraherar zellij till /opt
+  #   ansible.builtin.unarchive:
+  #     src: /tmp/zellij-x86_64-unknown-linux-musl.tar.gz
+  #     dest: /opt
+  #     remote_src: true
+  #
+  # - name: Symbolisklänk för zellij till /usr/local/bin
+  #   ansible.builtin.file:
+  #     src: /opt/zellij
+  #     dest: /usr/local/bin/zellij
+  #     state: link
+  #     force: true
+  #
+  #
+  # # - name: Test om Zellij är installerat
+  # #   ansible.builtin.shell:  command -v zellij
+  # #   register: zellij
+  # #   ignore_errors: true
+  # #
+  # # - name: Installerar Zellij med hjälp av cargo
+  # #   ansible.builtin.shell: cargo install --locked zellij
+  # #   ignore_errors: true
+  # #   when: zellij is failed
+  #
+  #
 - name: Konfigurerar Peasod miljö
   hosts: localhost
   gather_facts: false
